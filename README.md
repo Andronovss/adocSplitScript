@@ -1,6 +1,6 @@
 # adocSplitScript
 
-This repository contains a python script that splits one large adoc file into multiple files.
+This repository contains a python script that splits one large adoc or md file into multiple files.
 
 The splitting of the source file is based on the headings.
 
@@ -10,6 +10,6 @@ You can choose right file extension via CLI.
 
 Usage:
 
-```shell
+```ps
 python script.py input.adoc --format adoc
 ```
