@@ -48,5 +48,5 @@ def save_file(header, content):
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(f'{content}')
 
-# Замените 'input.adoc' на путь к вашему исходному файлу
+# Replace 'input.adoc' with the path to your source file
 split_file('input.adoc')
