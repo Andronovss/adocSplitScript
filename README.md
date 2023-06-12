@@ -6,7 +6,7 @@ The splitting of the source file is based on the headings.
 
 There are two extensions supported: *md* && *adoc*.
 
-You can choose right file extension via CLI.
+You can choose right file extension and file format via CLI.
 
 Usage:
 
