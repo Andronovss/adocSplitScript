@@ -1,9 +1,11 @@
 import os
 import argparse
 
+
 def create_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
+
 
 def split_file(filename, file_format):
     with open(filename, 'r', encoding='utf-8') as file:
@@ -15,7 +17,10 @@ def split_file(filename, file_format):
 
     for line in content:
         if line.startswith('=') or line.startswith('#'):
-            header_level = line.count('=') + line.count('#')
+            if file_format == 'md' and line.startswith('='):
+                # Replace '=' with '#' for md format
+                line = line.replace('=', '#', -1)
+            line.count('#')
             header = line.strip('=# \n')
             if header_found:
                 # Save the previous content to a file
@@ -31,15 +36,16 @@ def split_file(filename, file_format):
                 directory = os.path.join('output', *directory_parts)
             create_directory(directory)
         current_content += line
-    
+
     # Save the last section to a file
     if header_found:
         save_file(current_header, current_content, file_format)
 
+
 def save_file(header, content, file_format):
     # Remove invalid characters from the header
     header = ''.join(c for c in header if c.isalnum() or c.isspace())
-    
+
     # Create a directory for the file
     directory = os.path.join('output', header)
     create_directory(directory)
@@ -51,16 +57,18 @@ def save_file(header, content, file_format):
         extension = '.md'
     else:
         raise ValueError(f"Unsupported file format: {file_format}")
-    
+
     # Save the content to a file with ".adoc" extension
     filename = os.path.join(directory, header + extension)
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(f'{content}')
 
+
 # Creating a command-line argument parser
 parser = argparse.ArgumentParser(description='Split a large AsciiDoc or Markdown files based on headers.')
 parser.add_argument('filename', type=str, help='Path to the input file')
-parser.add_argument('--format', type=str, choices=['adoc', 'md'], default='adoc', help='Output file format (adoc or md)')
+parser.add_argument('--format', type=str, choices=['adoc', 'md'], default='adoc',
+                    help='Output file format (adoc or md)')
 
 # Getting command-line arguments
 args = parser.parse_args()
