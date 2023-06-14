@@ -24,7 +24,7 @@ window_y = (screen_height - window_height) // 2
 root.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 
 # Creating the "Select File" button
-button_file = tk.Button(root, text="Выбрать файл")
+button_file = tk.Button(root, text="Select file")
 button_file.pack(anchor="nw", padx=20, pady=20, ipadx=10, ipady=10, side='left', expand=False)
 
 # Create a drop-down menu with parameter selection
