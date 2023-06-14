@@ -55,7 +55,7 @@ button_quit.pack(anchor="s", padx=10, pady=30, ipadx=20, ipady=10, side='bottom'
 selected_file = ''
 
 # Runtime icon
-icon_image = tk.PhotoImage(file="./_icons/thumb_02.png")
+icon_image = tk.PhotoImage(file="./_icons/thumb.png")
 icon_label = tk.Label(root, image=icon_image, compound="none")
 icon_label.place(anchor="sw")
 icon_label.pack_forget()
